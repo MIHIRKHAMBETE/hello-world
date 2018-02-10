@@ -16,6 +16,7 @@
 using namespace std;
 
 int secret_int(int numdigs = 4){
+    //picks a 4-digit number with all distinct digits (secret number).
     int final_int = 0;
     std::vector<int> digits = {1,2,3,4,5,6,7,8,9};
     int index = rand() % digits.size();
@@ -37,6 +38,7 @@ class Manager
         std::string str_form = std::to_string(hidden);
     public:
         int bulls(std::string guess){
+            //returns the number of digits entered in the right positions
             int same = 0;
             for(int i = 0;i < guess.size();i++){
                 if(guess[i] == str_form[i]){
@@ -46,6 +48,8 @@ class Manager
             return same;
         }
         int cows(std::string guess){
+            //returns the number of digits present in the secret number also present in the user's guess
+            // order does not matter here
             int match = 0;
             for(int i = 0;i < guess.size();i++){
                 char next_digit = str_form[i];
